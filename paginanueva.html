@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos2.css">
+
+</head>
+<body>
+    <header class="header-container">
+        <div>
+            <div class="logo">Diario</div>
+            <div class="date">14.05.2023</div>
+        </div>
+        <div class="navegation-menu">
+            <nav>
+                 <ul>
+                    <li>
+                        <a href="#">Politica</a>
+                        <a href="#">Deportes</a>
+                        <a href="#">Ocio</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="hamburger">&#9776;</div>
+    </header>
+        
+    <main class="main-container">
+        <div class="column1">
+            <section>
+                <h1 class="article-title">Juegos Crear: imponente cierre en un Parque Independencia que vivió cuatro días a puro deporte</h1>
+                <p>La última jornada fue protagonizada por una multitud que disfrutó de las diferentes actividades deportivas y recreativas, y las múltiples propuestas del Fan Fest</p>
+                <p>Con un cierre multitudinario, este domingo se clausuró la primera edición de los Juegos CReAR (Centro Regional de Alto Rendimiento), un evento que volvió a mostrar toda la oferta deportiva que tiene la ciudad, además de un Fan Fest con gran cantidad de actividades que disfrutó la familia.</p>
+                <p>Con un sol a pleno, la última jornada se vivió desde temprano con miles de personas recorriendo bulevar Oroño y mezclándose con los habituales participantes de cada domingo de Calle Recreativa.</p>
+            </section>
+        </div>
+        <div class="column2">
+            <section>
+            <h1 class="article-title">Barcelona campeón: selló su 27ª Liga de España y ahora le apunta al regreso de Messi</h1>
+            <p>El equipo de Xavi ganó 4-2 en clásico catalán ante el Espanyol, como visitante, y se consagró en el torneo local. Los hinchas locales invadieron la cancha e impidieron el festejo. ¿Podrá concretarse la vuelta de su máximo ídolo?</p>
+            <img class="article-img" src="https://www.rosario3.com/__export/1684100261243/sites/rosario3/img/2023/05/14/barsa_campeon.jpg_1756841869.jpg" alt="img1">
+            
+            </section>
+        </div>
+        <div class="column3">
+            <h1 class="article-title">TC2000 en Rosario: Santero y Montenegro festejaron en una carrera con sorpresas y un impactante vuelco</h1>
+            <p>Los pilotos de Toyota y Renault ganaron las finales en el autódromo Juan Manuel Fangio, donde sobresalió la ausencia del actual campeón Leonel Pernía</p>
+            <img class="article-img" src="https://www.rosario3.com/__export/1684092533892/sites/rosario3/img/2023/05/14/tc2000_rosario_crop1684092478087.jpeg_1756841869.jpeg" alt="img2">
+            <p>El mendocino Julián Santero (Toyota Corolla) y el chubutense Ignacio Montenegro (Renault Fluence) se impusieron este domingo en las dos finales del TC2000 en el autódromo Juan Manuel Fangio de Rosario, en el marco de la cuarta fecha del campeonato de la categoría.</p>
+        </div>
+
+    </main>
+
+    <footer class="footer-container">
+        <div>
+            <ul>
+                <li>
+                    <a href="#">Quienes somos</a>
+                    <a href="#">Trabajos</a>
+                    <a href="#">Contacto</a>
+                    <a href="#">Terminos</a>
+                    <a href="#">Politica de privacidad</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <form id="form" class="form-container">
+        <div class="form-field">
+            <label for="full-name">Nombre completo:</label>
+            <input type="text" id="full-name">
+            <div class="error-message" id="error-full-name"></div>
+        </div>
+        <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+            <div class="error-message" id="error-email"></div>
+        </div>
+        <div class="form-field">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password">
+            <div class="error-message" id="error-password"></div>
+        </div>
+        <div class="form-field">
+            <label for="repeat-password">Repetir contraseña:</label>
+            <input type="password" id="repeat-password">
+            <div class="error-message" id="error-repeat-password"></div>
+        </div>
+        <div class="form-field">
+            <label for="age">Edad:</label>
+            <input type="number" id="age">
+            <div class="error-message" id="error-age"></div>
+        </div>
+        <div class="form-field">
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone">
+            <div class="error-message" id="error-phone"></div>
+        </div>
+        <div class="form-field">
+            <label for="address">Dirección:</label>
+            <input type="text" id="address">
+            <div class="error-message" id="error-address"></div>
+        </div>
+        <div class="form-field">
+            <label for="city">Ciudad:</label>
+            <input type="text" id="city">
+            <div class="error-message" id="error-city"></div>
+        </div>
+        <div class="form-field">
+            <label for="postcode">Código postal:</label>
+            <input type="text" id="postcode">
+            <div class="error-message" id="error-postcode"></div>
+        </div>
+        <div class="form-field">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni">
+            <div class="error-message" id="error-dni"></div>
+        </div>
+        <div class="form-field">
+            <button type="submit">Enviar</button>
+        </div>
+
+    </form>
+
+    <script src="formulario.js"></script>
+</body>
+</html>
