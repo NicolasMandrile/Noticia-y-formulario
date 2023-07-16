@@ -219,3 +219,135 @@ document.getElementById('postcode').addEventListener('focus', function() {
 document.getElementById('dni').addEventListener('focus', function() {
     document.getElementById('error-dni').textContent = '';
 });
+
+// Función para enviar los datos del formulario al servidor mediante GET
+function sendDataToServer(formData) {
+    const queryString = Object.entries(formData)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+        .join('&');
+
+    const url = `https://jsonplaceholder.typicode.com/posts?${queryString}`;
+
+    // Realizar la solicitud GET al servidor
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                // Envío exitoso
+                handleSuccess();
+            } else {
+                // Envío fallido
+                handleFailure();
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            handleFailure();
+        });
+}
+
+// Función para manejar el éxito del envío de datos
+function handleSuccess() {
+    // Guardar los datos en LocalStorage
+    const formData = {
+        fullName: document.getElementById('full-name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        password: document.getElementById('password').value.trim(),
+        repeatPassword: document.getElementById('repeat-password').value.trim(),
+        age: parseInt(document.getElementById('age').value),
+        phone: document.getElementById('phone').value.trim(),
+        address: document.getElementById('address').value.trim(),
+        city: document.getElementById('city').value.trim(),
+        postalCode: document.getElementById('postcode').value.trim(),
+        dni: document.getElementById('dni').value.trim()
+    };
+
+    localStorage.setItem('formData', JSON.stringify(formData));
+
+    // Mostrar el modal de éxito
+    const successModal = document.getElementById('success-modal');
+    successModal.style.display = 'block';
+}
+
+// Función para manejar el fracaso del envío de datos
+function handleFailure() {
+    // Mostrar el modal de fracaso
+    const failureModal = document.getElementById('failure-modal');
+    failureModal.style.display = 'block';
+}
+
+// Función para cargar los valores predeterminados del formulario desde LocalStorage
+function loadFormDataFromLocalStorage() {
+    const formData = JSON.parse(localStorage.getItem('formData'));
+
+    if (formData) {
+        document.getElementById('full-name').value = formData.fullName || '';
+        document.getElementById('email').value = formData.email || '';
+        document.getElementById('password').value = formData.password || '';
+        document.getElementById('repeat-password').value = formData.repeatPassword || '';
+        document.getElementById('age').value = formData.age || '';
+        document.getElementById('phone').value = formData.phone || '';
+        document.getElementById('address').value = formData.address || '';
+        document.getElementById('city').value = formData.city || '';
+        document.getElementById('postcode').value = formData.postalCode || '';
+        document.getElementById('dni').value = formData.dni || '';
+    }
+}
+
+// Función para ocultar el modal
+function hideModal() {
+    const modals = document.getElementsByClassName('modal');
+    for (let i = 0; i < modals.length; i++) {
+        modals[i].style.display = 'none';
+    }
+}
+
+// Agregar el evento de envío del formulario
+document.getElementById('form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Evitar que se envíe el formulario automáticamente
+
+    const isValidFullName = validateFullName();
+    const isValidEmail = validateEmail();
+    const isValidPassword = validatePassword();
+    const isValidAge = validateAge();
+    const isValidPhone = validatePhone();
+    const isValidAddress = validateAddress();
+    const isValidCity = validateCity();
+    const isValidPostalCode = validatePostalCode();
+    const isValidDNI = validateDNI();
+
+    if (
+        isValidFullName &&
+        isValidEmail &&
+        isValidPassword &&
+        isValidAge &&
+        isValidPhone &&
+        isValidAddress &&
+        isValidCity &&
+        isValidPostalCode &&
+        isValidDNI
+    ) {
+        const formData = {
+            fullName: document.getElementById('full-name').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            password: document.getElementById('password').value.trim(),
+            repeatPassword: document.getElementById('repeat-password').value.trim(),
+            age: parseInt(document.getElementById('age').value),
+            phone: document.getElementById('phone').value.trim(),
+            address: document.getElementById('address').value.trim(),
+            city: document.getElementById('city').value.trim(),
+            postalCode: document.getElementById('postcode').value.trim(),
+            dni: document.getElementById('dni').value.trim()
+        };
+
+        sendDataToServer(formData);
+    }
+});
+
+// Agregar el evento onload para cargar valores predeterminados desde LocalStorage
+window.onload = loadFormDataFromLocalStorage;
+
+// Agregar los eventos de cierre del modal
+const closeButtons = document.getElementsByClassName('close');
+for (let i = 0; i < closeButtons.length; i++) {
+    closeButtons[i].addEventListener('click', hideModal);
+}
